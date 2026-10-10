@@ -27,10 +27,10 @@ jobs:
   tittle-issue:
     runs-on: ubuntu-slim
     steps:
-      - name: assign label
+      - name: Assign label
         run: |
-           issue_title="${{github.event.issue.tittle}}"
-           if [[ "$issue_title" == *"bug"* ]] ; then      
+           issue_title="${{ github.event.issue.tittle }}"
+           if [[ "$issue_title" == *"bug"* ]]; then      
            echo "Issue is about a bug"
            else
            echo "Issue is not about a bug"
