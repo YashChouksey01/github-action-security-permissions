@@ -1,18 +1,37 @@
+# name: Title Issues (Script Injection Example)
+# on:
+#   issues:
+#     types:
+#       - opened
+# jobs:
+#   title-issue:
+#     runs-on: ubuntu-slim
+#     steps:
+#       - name: Assign label
+#         env:
+#           TITLE: ${{ github.event.issue.title }}
+#         run: |
+#           if [[ "$TITLE" == *"bug"* ]]; then
+#           echo "Issue is about a bug!"
+#           else
+#           echo "Issue is not about a bug"
+#           fi
+##################################################
+
 name: Title Issues (Script Injection Example)
 on:
   issues:
     types:
       - opened
 jobs:
-  title-issue:
+  tittle-issue:
     runs-on: ubuntu-slim
     steps:
-      - name: Assign label
-        env:
-          TITLE: ${{ github.event.issue.title }}
+      - name: assign label
         run: |
-          if [[ "$TITLE" == *"bug"* ]]; then
-          echo "Issue is about a bug!"
-          else
-          echo "Issue is not about a bug"
-          fi
+           issue_title="${{github.event.issue.tittle}}"
+           if [["$issue_tittle" == *"bug"*]] ; then
+           echo "Issue is about a bug"
+           else
+           echo "Issue is not about a bug"
+           fi
