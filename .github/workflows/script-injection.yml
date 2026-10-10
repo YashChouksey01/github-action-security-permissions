@@ -30,8 +30,10 @@ jobs:
       - name: assign label
         run: |
            issue_title="${{github.event.issue.tittle}}"
-           if [["$issue_tittle" == *"bug"*]] ; then
+           if [[ "$issue_title" == *"bug"* ]] ; then      
            echo "Issue is about a bug"
            else
            echo "Issue is not about a bug"
            fi
+
+# In Bash, you must put spaces after [[ and before ]].
