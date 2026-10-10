@@ -28,14 +28,31 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - name: Assign label
-        # env:
-        #   TITLE: ${{ github.event.issue.title }}
+        env:
+          TITLE: ${{ github.event.issue.title }}
         run: |
-           issue_title="${{ github.event.issue.title }}"
-           if [[ "$issue_title" == *"bug"* ]]; then      
-           echo "Issue is about a bug"
+           if [[ "$TITLE" == *"bug"* ]]; then      
+           echo "Issue is about a bug!"
            else
            echo "Issue is not about a bug"
            fi
 
+
+
+  # issue_title="${{ github.event.issue.title }}"
+  #          if [[ "$issue_title" == *"bug"* ]]; then      
+  #          echo "Issue is about a bug"
+  #          else
+  #          echo "Issue is not about a bug"
+  #          fi
+
+
+           
 # In Bash, you must put spaces after [[ and before ]].
+
+  # script injection --> input (from commitmessage , PS's , issue title , etc) is executed as a shell code in workflow
+  # issue tittle in github -> newrasd";echo asdasdas"  ,  The semicolon (;) separates commands in issue in github 
+        # Run issue_title="newrasd";echo asdasdas""
+        # asdasdas
+        # Issue is not about a bug
+# to solve this problem we must use environment variable
